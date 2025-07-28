@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ابراهيم الشرقاوى</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <main class="container-xxl my-5" dir="rtl">
+        <div class="row">
+            <div class="col-lg-3">
+                <nav id="article-nav" class="sticky-top pt-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h2 class="h5 mb-0">أقسام المقال</h2>
+                        </div>
+                        <div class="list-group list-group-flush list-group-flush"><a class="list-group-item list-group-item-action" href="#article-hero"><span>المقدمة</span></a><a class="list-group-item list-group-item-action" href="#putin-response"><span>رد بوتين وتوسيع القدرات</span></a><a class="list-group-item list-group-item-action" href="#russian-strikes"><span>ضربات روسية نوعية</span></a><a class="list-group-item list-group-item-action" href="#denmark-scandal"><span>فضيحة "روسيا جيت"</span></a><a class="list-group-item list-group-item-action" href="#faq-section"><span>أسئلة شائعة</span></a></div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-9">
+                <div class="bg-body-tertiary scrollspy-example p-3 rounded-2" data-bs-spy="scroll" data-bs-target="#article-nav" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+                    <nav aria-label="breadcrumb" class="mb-4">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../video.html"><span>الرئيسية</span></a></li>
+                            <li class="breadcrumb-item"><a href="../video.html"><span>الأخبار الدولية</span></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><span>تحليل الصراع الروسي الأوكراني</span></li>
+                        </ol>
+                    </nav>
+                    <section id="article-hero" class="mb-5">
+                        <div class="card shadow-sm">
+                            <figure class="figure mb-0">
+                                <picture>
+                                    <source srcset="assets/img/vladimir-putin-navy-day-400.webp 400w, assets/img/vladimir-putin-navy-day-820.webp 820w, assets/img/vladimir-putin-navy-day-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 73vw" type="image/webp"><img class="img-fluid d-block card-img-top" src="assets/img/vladimir-putin-navy-day-820.jpg" srcset="assets/img/vladimir-putin-navy-day-400.jpg 400w, assets/img/vladimir-putin-navy-day-820.jpg 820w, assets/img/vladimir-putin-navy-day-1200.jpg 1200w" sizes="(max-width: 991px) 100vw, 73vw" width="1200" height="675" alt="الرئيس الروسي فلاديمير بوتين خلال احتفالات يوم البحرية في سان بطرسبرغ.">
+                                </picture>
+                                <figcaption class="figure-caption visually-hidden">الرئيس بوتين يتحدى الهجمات الأوكرانية بحضور احتفالات يوم البحرية.</figcaption>
+                            </figure>
+                            <div class="card-body p-4">
+                                <article aria-labelledby="main-heading">
+                                    <h1 id="main-heading" class="card-title h2 mb-3">هجوم أوكراني فاشل يستهدف بوتين في سان بطرسبرغ</h1>
+                                    <p class="text-muted author">قسم التحليلات العسكرية - تم النشر اليوم</p>
+                                    <p>في تصعيد لافت، حاولت القوات الأوكرانية استهداف مدينة سان بطرسبرغ الروسية، بالتزامن مع زيارة الرئيس فلاديمير بوتين للمدينة للمشاركة في احتفالات يوم البحرية. سعت كييف من خلال هذا الهجوم بالطائرات المسيرة إلى إفساد الاحتفال الرمزي، إلا أن محاولتها باءت بالفشل، حيث تمكنت الدفاعات الجوية الروسية من إسقاط الطائرات المهاجمة قبل وصولها إلى أهدافها.</p>
+                                    <p>وعلى الرغم من إلغاء العرض البحري الكبير الذي كان مقرراً لأسباب أمنية، أصر الرئيس بوتين على الحضور والتجول في المدينة، في رسالة تحدٍ واضحة. وقد أظهرت مقاطع الفيديو اشتباك الدفاعات الجوية الروسية مع الطائرات الأوكرانية، مما أدى إلى إغلاق أحد مطارات المدينة لمدة خمس ساعات، لكنه لم يمنع بوتين من إكمال جدول أعماله.</p>
+                                    <p>بعد صد الهجوم، التقى بوتين بطاقم إحدى الفرقاطات التي شاركت في عملية التصدي، وناقش معهم تفاصيل العملية على فنجان من الشاي، في لفتة تهدف إلى رفع معنويات القوات وتأكيد سيطرة الدولة على الوضع.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="putin-response" class="mb-5">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h3 mb-3">بوتين يرد: توسيع البحرية وزيادة إنتاج الطائرات المسيرة</h2>
+                                <p>رداً على التهديدات المتزايدة، أعلن الرئيس بوتين عن خطط طموحة لتعزيز القدرات العسكرية الروسية، خاصة في المجال البحري. وكشف عن نية تحويل خمسة ألوية بحرية إلى فرق كاملة بحلول عام 2025، مما سيزيد بشكل كبير من القوة الضاربة والقدرات القتالية للأسطول الروسي.</p>
+                                <p>وأكد بوتين أن هذه الخطوة ستترافق مع تزويد الأسطول بأحدث التقنيات والأسلحة، بالإضافة إلى رفع مستوى تدريب القوات. وشدد على أن المنظومة العسكرية المتكاملة تتطلب ثلاثة عناصر: عدد كبير، وتكنولوجيا متقدمة، وجنود ذوي كفاءة عالية، وهي الأركان التي تعمل روسيا على تطويرها بشكل متزامن.</p>
+                                <figure class="figure d-table mx-auto my-4">
+                                    <picture>
+                                        <source srcset="assets/img/russian-drone-production-alabuga-400.webp 400w, assets/img/russian-drone-production-alabuga-820.webp 820w, assets/img/russian-drone-production-alabuga-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 73vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="assets/img/russian-drone-production-alabuga-820.jpg" srcset="assets/img/russian-drone-production-alabuga-400.jpg 400w, assets/img/russian-drone-production-alabuga-820.jpg 820w, assets/img/russian-drone-production-alabuga-1200.jpg 1200w" sizes="(max-width: 991px) 100vw, 73vw" width="1200" height="675" alt="صور أقمار صناعية تظهر توسع منشأة الابوغا لإنتاج الطائرات المسيرة الروسية.">
+                                    </picture>
+                                    <figcaption class="figure-caption text-center mt-2">لقطة من القمر الصناعي تظهر الحجم الهائل لمنشأة "الابوغا" الروسية لإنتاج الدرونات.</figcaption>
+                                </figure>
+                                <p>على صعيد آخر، أظهرت تقارير استخباراتية وصور أقمار صناعية، نقلتها شبكة CNN، قلقاً غربياً متزايداً بسبب التوسع الهائل في <a class="fw-bold text-primary scroll-link" href="#putin-response">منشأة "الابوغا" الاقتصادية الخاصة</a>، المخصصة لإنتاج الطائرات بدون طيار. وتشير التقديرات إلى أن المنشأة ستتمكن عند اكتمالها من توظيف ما يصل إلى 40 ألف شخص، مع توقعات بأن القوات الروسية ستكون قادرة قريباً على إطلاق ما يصل إلى 1000 طائرة مسيرة في الهجمة الواحدة، مما يمثل تحولاً نوعياً في قدرات روسيا التي كانت تعاني من نقص في هذا المجال قبل سنوات.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="russian-strikes" class="mb-5">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h3 mb-3">ضربات روسية نوعية تدمر أسلحة غربية وقادة أوكرانيين</h2>
+                                <p>لم يقتصر الرد الروسي على الخطط المستقبلية، بل تبعه عمليات نوعية فورية. فقد أفادت تقارير ميدانية بتدمير محطتي رادار ومنصات <a class="fw-bold text-primary scroll-link" href="#russian-strikes">صواريخ "باتريوت"</a> وصلت حديثاً من ألمانيا، حيث تم استهدافها بصواريخ "اسكندر إم" فور وصولها إلى مطار ستاركوستنتينيف العسكري أثناء تفريغها.</p>
+                                <figure class="figure d-table mx-auto my-4">
+                                    <picture>
+                                        <source srcset="assets/img/patriot-missile-system-destroyed-400.webp 400w, assets/img/patriot-missile-system-destroyed-820.webp 820w, assets/img/patriot-missile-system-destroyed-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 73vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="assets/img/patriot-missile-system-destroyed-820.jpg" srcset="assets/img/patriot-missile-system-destroyed-400.jpg 400w, assets/img/patriot-missile-system-destroyed-820.jpg 820w, assets/img/patriot-missile-system-destroyed-1200.jpg 1200w" sizes="(max-width: 991px) 100vw, 73vw" width="1200" height="675" alt="منظومة صواريخ باتريوت متفحمة بعد استهداف روسي دقيق في أوكرانيا.">
+                                    </picture>
+                                    <figcaption class="figure-caption text-center mt-2">آثار الدمار على منظومة باتريوت للدفاع الجوي بعد ضربة روسية محكمة.</figcaption>
+                                </figure>
+                                <p>كما ألحقت طائرات "جيران 2" المسيرة أضراراً بالغة بثلاث منصات دفاع جوي من طراز "جيبارد"، ودمرت اثنتين منها بالكامل. وتضرر أيضاً مخبأ تحت الأرض مخصص للضباط في المطار نفسه، مما أدى إلى انهياره. وفي ضربة أخرى، استهدفت القوات الروسية اجتماعاً لقيادات رئيسية في أكبر وحدات الطائرات بدون طيار الأوكرانية، مما أدى إلى تحييد عدد منهم.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="denmark-scandal" class="mb-5">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h3 mb-3">فضيحة "روسيا جيت": الدنمارك وسياسة الكيل بمكيالين</h2>
+                                <p>في سياق متصل، كشفت تقارير عن <a class="fw-bold text-primary scroll-link" href="#denmark-scandal">فضيحة أُطلق عليها "روسيا جيت" في الدنمارك</a>، تسلط الضوء على ازدواجية المعايير الغربية. ففي الوقت الذي تقدم فيه الحكومة الدنماركية مساعدات عسكرية لكييف، بما في ذلك طائرات "إف-16"، يواصل مليارديرات دنماركيون التعاون مع موسكو من خلال خدمة "أسطول الظل" الروسي للغاز.</p>
+                                <figure class="figure d-table mx-auto my-4">
+                                    <picture>
+                                        <source srcset="assets/img/denmark-shadow-fleet-scandal-400.webp 400w, assets/img/denmark-shadow-fleet-scandal-820.webp 820w, assets/img/denmark-shadow-fleet-scandal-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 73vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="assets/img/denmark-shadow-fleet-scandal-820.jpg" srcset="assets/img/denmark-shadow-fleet-scandal-400.jpg 400w, assets/img/denmark-shadow-fleet-scandal-820.jpg 820w, assets/img/denmark-shadow-fleet-scandal-1200.jpg 1200w" sizes="(max-width: 991px) 100vw, 73vw" width="1200" height="675" alt="سفينة من أسطول الظل الروسي ترسو في ميناء دنماركي لتلقي الخدمات.">
+                                    </picture>
+                                    <figcaption class="figure-caption text-center mt-2">إحدى سفن أسطول الظل الروسي وهي تتلقى خدمات الصيانة في حوض بناء سفن دنماركي.</figcaption>
+                                </figure>
+                                <p>وتظهر بيانات الملاحة البحرية أن سفناً روسية، مثل "فيودور ليتكي"، ترسو وتتلقى خدمات الصيانة في أحواض بناء سفن يملكها رجال أعمال دنماركيون. وقد أثار هذا الأمر انتقادات حادة داخل الدنمارك، حيث علق رئيس الوزراء المصدوم بأن هذه الشركات تساهم بشكل غير مباشر في تمويل آلة الحرب الروسية. ومع ذلك، لا يمكن اتخاذ إجراءات قانونية ضدها لأن هذه الخدمات لا تخرق العقوبات المفروضة حالياً، مما يكشف عن ثغرات كبيرة في سياسة العقوبات الغربية ويؤكد أن المصالح الاقتصادية لا تزال تتفوق على المواقف السياسية المعلنة.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="faq-section" class="mb-5">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-warning">
+                                <h2 id="faq-heading" class="mb-0 h4">أبرز النقاط والأسئلة الشائعة</h2>
+                            </div>
+                            <div class="p-0">
+                                <div class="accordion accordion-flush" id="faqAccordion">
+                                    <div class="accordion-item faq-item">
+                                        <h3 class="accordion-header" id="faq-q1-heading"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-q1-collapse" aria-expanded="true" aria-controls="faq-q1-collapse"> كيف رد الرئيس بوتين على محاولة استهدافه في سان بطرسبرغ؟ </button></h3>
+                                        <div id="faq-q1-collapse" class="accordion-collapse collapse show" aria-labelledby="faq-q1-heading" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body">
+                                                <p>رد الرئيس بوتين برسالة تحدٍ واضحة عبر إصراره على إكمال جدول أعماله في المدينة. وعلى الصعيد العسكري، أعلن عن خطط طموحة لتوسيع البحرية الروسية بتحويل خمسة ألوية إلى فرق كاملة بحلول 2025، بالإضافة إلى زيادة هائلة في إنتاج الطائرات المسيرة عبر منشأة "الابوغا"، بهدف تحقيق تفوق نوعي في هذا المجال.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item faq-item">
+                                        <h3 class="accordion-header" id="faq-q2-heading"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-q2-collapse" aria-expanded="false" aria-controls="faq-q2-collapse"> ما هي أبرز الخسائر التي تكبدتها القوات الأوكرانية مؤخراً؟ </button></h3>
+                                        <div id="faq-q2-collapse" class="accordion-collapse collapse" aria-labelledby="faq-q2-heading" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body">
+                                                <p>وفقاً للتقارير، شملت الخسائر الأوكرانية تدمير أسلحة غربية حديثة فور وصولها، من ضمنها محطتا رادار ومنصات صواريخ "باتريوت" ألمانية تم استهدافها بصواريخ "اسكندر إم". كما تم تدمير منصتي دفاع جوي من طراز "جيبارد" وإلحاق أضرار بالغة بثالثة، بالإضافة إلى انهيار مخبأ ضباط واستهداف اجتماع لقيادات وحدات الطائرات المسيرة الأوكرانية.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item faq-item">
+                                        <h3 class="accordion-header" id="faq-q3-heading"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-q3-collapse" aria-expanded="false" aria-controls="faq-q3-collapse"> ما هي فضيحة "روسيا جيت" التي كُشفت في الدنمارك؟ </button></h3>
+                                        <div id="faq-q3-collapse" class="accordion-collapse collapse" aria-labelledby="faq-q3-heading" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body">
+                                                <p>هي فضيحة تسلط الضوء على ازدواجية المعايير، حيث تواصل شركات يملكها مليارديرات دنماركيون تقديم خدمات صيانة لـ "أسطول الظل" الروسي لناقلات الغاز، في نفس الوقت الذي تقدم فيه الحكومة الدنماركية مساعدات عسكرية ضخمة لأوكرانيا. هذه الأنشطة لا تخرق العقوبات الحالية، مما يكشف ثغرات في النظام الغربي ويظهر أن المصالح الاقتصادية قد تتغلب على المواقف السياسية المعلنة.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="final-cta">
+                        <div class="card border-primary text-center border-2 shadow-sm">
+                            <div class="card-body p-5">
+                                <h2 class="card-title h3">تابع آخر التطورات</h2>
+                                <p class="lead card-text">اشترك في نشرتنا الإخبارية للحصول على تحليلات حصرية وتغطية مستمرة لأهم الأحداث العالمية.</p><a class="btn btn-primary btn-lg mt-3" role="button" href="#">اشترك الآن</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

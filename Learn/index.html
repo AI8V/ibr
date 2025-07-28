@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ابراهيم الشرقاوى</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <main class="container-xxl my-5" dir="rtl">
+        <div class="row g-lg-0">
+            <div class="col-lg-10" data-bs-spy="scroll" data-bs-target="#scrollspy-nav" data-bs-root-margin="0px 0px -40%" tabindex="0">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><span>الرئيسية</span></a></li>
+                        <li class="breadcrumb-item"><a href="#"><span>مقالات عقدية</span></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><span>قصة آدم والجنة</span></li>
+                    </ol>
+                </nav>
+                <section id="article-hero" class="mb-5">
+                    <div class="card shadow-sm">
+                        <figure class="figure mb-0">
+                            <picture>
+                                <source srcset="../assets/img/Article1/austria-nato-flags-400.webp 400w, ../assets/img/Article1/austria-nato-flags-820.webp 820w, ../assets/img/Article1/austria-nato-flags-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="img-fluid d-block card-img-top" src="../assets/img/Article1/austria-nato-flags-1200.webp" srcset="../assets/img/Article1/austria-nato-flags-400.webp 400w, ../assets/img/Article1/austria-nato-flags-820.webp 820w, ../assets/img/Article1/austria-nato-flags-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="400" alt="تصور فني لجنة آدم على الأرض، محاطة بأسوار طبيعية من الجبال والأشجار الكثيفة." loading="eager" fetchpriority="high" decoding="async">
+                            </picture>
+                            <figcaption class="figure-caption visually-hidden">تصور فني لجنة آدم على الأرض، تظهر فيها الأشجار النضرة والجبال كحدود طبيعية.</figcaption>
+                        </figure>
+                        <div class="card-body p-4">
+                            <article aria-labelledby="main-heading">
+                                <h1 id="main-heading" class="card-title h2 mb-3">قصة آدم والجنة: هل كانت في السماء أم على الأرض؟</h1>
+                                <p class="text-muted author">بواسطة فريق التحرير | تاريخ النشر: 25 مايو 2024</p>
+                                <p>تبدأ قصة البشرية بعد حدث جلل: خروج إبليس من حضرة الملأ الأعلى. هنا، يأمر الله سبحانه وتعالى آدم وزوجه بدخول "الجنة"، فيقول تعالى: "وَقُلْنَا يَا آدَمُ اسْكُنْ أَنتَ وَزَوْجُكَ الْجَنَّةَ". ولكن، أي جنة هذه؟ من الضروري التمييز بين <a class="fw-bold text-primary scroll-link" href="#section-comparison">أنواع الجنان المذكورة</a> لفهم طبيعة هذا الاختبار الأول.</p>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                <section id="section-intro" class="mb-5">
+                    <h2 class="h3 border-bottom pb-2 mb-3">أنواع الجنان وطبيعة الاختبار</h2>
+                    <p>هناك مفاهيم متعددة للجنة في السياق الديني، ويمكن تلخيصها في ثلاثة أنواع رئيسية:</p>
+                    <ol>
+                        <li><strong>جنة الملأ الأعلى:</strong> وهي الحرم الإلهي الذي تم فيه خلق آدم وتكليفه، وشهد سجود الملائكة ورفض إبليس. إنها ليست جنة جزاء، بل مقاماً سماوياً رفيعاً.</li>
+                        <li><strong>جنة الخلد:</strong> هي جنة الجزاء الأبدي للمؤمنين، والتي وصفها النبي صلى الله عليه وسلم بأن فيها "مَا لَا عَيْنٌ رَأَتْ، وَلَا أُذُنٌ سَمِعَتْ، وَلَا خَطَرَ عَلَىٰ قَلْبِ بَشَرٍ". هذا الوصف يؤكد أن آدم، وهو من البشر، لم يكن ليدخلها قبل يوم الحساب، فالداخل إليها لا يخرج منها، ولا يدخلها إبليس.</li>
+                        <li><strong>جنة الاختبار:</strong> وهي الجنة التي دخلها آدم وزوجه، وكانت مسرحاً للاختبار الإلهي الأول.</li>
+                    </ol>
+                    <p>كان الاختبار الذي وُضع فيه آدم بسيطاً في ظاهره، لكنه عميق في دلالاته. لم يكن مطلوباً منه بناء حضارة أو الكد في عمل، بل كان تكليفه يقتصر على نهي واحد فقط. يقول تعالى في سورة طه: "إِنَّ لَكَ أَلَّا تَجُوعَ فِيهَا وَلَا تَعْرَىٰ * وَأَنَّكَ لَا تَظْمَأُ فِيهَا وَلَا تَضْحَىٰ". هذا يعني أن آدم لم يكن يأكل دافعه الجوع أو العطش، بل كان الأكل من باب النعيم والتنزه. الاختبار كان يتمحور حول أمر واحد: "وَلَا تَقْرَبَا هَٰذِهِ الشَّجَرَةَ فَتَكُونَا مِنَ الظَّالِمِينَ". مجرد الاقتراب كان محظوراً، مما يجعل المهمة واضحة ومحددة.</p>
+                </section>
+                <section id="section-comparison" class="mb-5">
+                    <h2 class="h3 border-bottom pb-2 mb-3">مقارنة سريعة بين أنواع الجنان</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col">النوع</th>
+                                    <th scope="col">الطبيعة والهدف</th>
+                                    <th scope="col">الساكنون</th>
+                                    <th scope="col">المصير</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>جنة الملأ الأعلى</strong></td>
+                                    <td>مقام تكليف وتشريف سماوي</td>
+                                    <td>آدم (عند خلقه) والملائكة</td>
+                                    <td>مكان للحدث التأسيسي (الأمر بالسجود)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>جنة الخلد</strong></td>
+                                    <td>دار جزاء ونعيم أبدي</td>
+                                    <td>المؤمنون الصالحون بعد الحساب</td>
+                                    <td>الخلود بلا خروج</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>جنة الاختبار</strong></td>
+                                    <td>بيئة أرضية مهيأة للاختبار الأول</td>
+                                    <td>آدم وحواء</td>
+                                    <td>الخروج بعد المعصية لبدء مهمة الخلافة</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section id="section-debate" class="mb-5">
+                    <h2 class="h3 border-bottom pb-2 mb-3">الجدل حول موقع الجنة: السماء أم الأرض؟</h2>
+                    <p>ساد بين علماء السلف شبه إجماع على أن جنة آدم كانت في السماء، مستندين إلى أدلة رئيسية:</p>
+                    <ul>
+                        <li><strong>لفظ "اهبطوا":</strong> حيث يرون أن الهبوط لا يكون إلا من مكان عالٍ إلى مكان أدنى.</li>
+                        <li><strong>قوله تعالى "وَلَكُمْ فِي الْأَرْضِ مُسْتَقَرٌّ":</strong> الذي يفهم منه أنهم لم يكونوا في الأرض أصلاً.</li>
+                        <li><strong>حديث الشفاعة:</strong> وفيه يقول آدم للبشر يوم القيامة: "هل أخرجكم من الجنة إلا خطيئة أبيكم؟".</li>
+                    </ul>
+                    <p>ولكن هذه الأدلة يمكن مناقشتها. فالهبوط قد يعني الانتقال من مكان إلى آخر، كما في قصة نوح وهبوط بني إسرائيل إلى مصر. أما كون الأرض مستقراً لهم، فهذا لا ينفي أنهم كانوا في جزء مخصص منها، فالقرآن يذكر أن الله قرر جعل خليفة "فِي الْأَرْضِ" قبل خلق آدم. وأما حديث الشفاعة، فيمكن فهمه على أن آدم يعترف بفشله في اجتياز اختبار بسيط (النهي عن شجرة واحدة)، فكيف له أن يتشفع لفتح جنة الخلد ذات المقام العظيم؟</p>
+                    <p>الدليل القاطع الذي يرجح أن جنة الاختبار لم تكن هي جنة الخلد هو الحديث القدسي الذي رواه البخاري ومسلم: "أَعْدَدْتُ لِعِبَادِي الصَّالِحِينَ مَا لَا عَيْنٌ رَأَتْ...". فكيف يكون آدم قد دخلها ورآها وهو من البشر؟</p>
+                </section>
+                <section id="section-earthly-evidence" class="mb-5">
+                    <h2 class="h3 border-bottom pb-2 mb-3">الأدلة على أن الجنة كانت على الأرض</h2>
+                    <p>إذا لم تكن جنة الخلد، فأين كانت؟ تشير الدلائل إلى أنها كانت على الأرض، وأن الاختبار كان بمثابة "تدريب عملي" في نفس البيئة التي سيعمرها بنو آدم. لا يعقل أن يتم تدريب طيار على قيادة سيارة. وبالمثل، كان لا بد أن يكون التدريب على الخلافة في الأرض ضمن بيئة أرضية مهيأة.</p>
+                    <figure class="figure d-table mx-auto my-4">
+                        <picture>
+                            <source srcset="map-of-arabian-peninsula-as-garden.webp" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="map-of-arabian-peninsula-as-garden.webp" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="400" alt="خريطة طبوغرافية لشبه الجزيرة العربية توضح كيف يمكن اعتبارها جنة محاطة بحواجز طبيعية.">
+                        </picture>
+                        <figcaption class="figure-caption text-center mt-2">شبه الجزيرة العربية كنموذج جغرافي للجنة الأرضية المحصنة طبيعياً.</figcaption>
+                    </figure>
+                    <p><strong>موقعها الجغرافي:</strong> يرى العديد من المفسرين، ومنهم ابن عباس، أن هذه الجنة كانت شبه الجزيرة العربية. فكلمة "جنة" في اللغة تعني بستاناً ذا سور. وشبه الجزيرة العربية محاطة طبيعياً بمرتفعات وحواجز مائية تجعلها أشبه بقلعة أو حديقة ضخمة منعزلة.</p>
+                    <p><strong>مركز الأنبياء:</strong> لماذا تركزت رسالات معظم الأنبياء المذكورين في القرآن في منطقة الشرق الأوسط (الشام، العراق، مصر، والجزيرة العربية)؟ لأن هذه المنطقة كانت مسرح الأحداث الأول، أي "الجنة" التي بدأت فيها قصة البشرية.</p>
+                    <p><strong>مفهوم الهبوط والجبال:</strong> يفسر البعض "الهبوط" بأنه نزول من أرض مرتفعة (قمم الجبال أو الهضاب) إلى أرض منخفضة. القرآن يميز بين "الأرض" و"الجبال" كوحدتين منفصلتين. وما نعيش عليه اليوم هو قمم الجبال (القارات)، بينما الأرض الحقيقية هي قيعان المحيطات. قد يكون الهبوط هو انتقال آدم وحواء من المرتفعات الخصبة لشبه الجزيرة إلى الأراضي المحيطة المنخفضة بعد المعصية.</p>
+                </section>
+                <section id="section-meeting" class="mb-5">
+                    <h2 class="h3 border-bottom pb-2 mb-3">لقاء آدم وحواء وبداية البشرية</h2>
+                    <p>تخبرنا بعض الروايات عن السلف الصالح أن آدم أُهبط في الهند، بينما أُهبطت حواء في جدة. ثم بدأ آدم رحلة البحث عنها حتى اجتمعا عند جبل في مكة، فسُمي "عرفات" لأنه مكان تعارفهما. وازدلفت إليه حواء، أي اقتربت، فسميت المنطقة "مزدلفة". وهذا يؤكد أن مركز الأحداث كان في قلب شبه الجزيرة العربية.</p>
+                    <figure class="figure d-table mx-auto my-4">
+                        <picture>
+                            <source srcset="mount-arafat-symbol-of-meeting.webp" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="mount-arafat-symbol-of-meeting.webp" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="400" alt="منظر لجبل عرفات، يرمز إلى مكان لقاء آدم وحواء وبداية التوبة.">
+                        </picture>
+                        <figcaption class="figure-caption text-center mt-2">جبل عرفات، معلم يرمز إلى اللقاء والتوبة وبداية المسيرة البشرية الجديدة.</figcaption>
+                    </figure>
+                    <p>قبل لقائه بحواء، مسح الله على ظهر آدم فأخرج منه ذريته جميعاً، وأشهدهم على ربوبيته: "أَلَسْتُ بِرَبِّكُمْ ۖ قَالُوا بَلَىٰ ۛ شَهِدْنَا". كان هذا الميثاق الأول الذي أخذه الله على البشرية جمعاء.</p>
+                </section>
+                <section id="section-conclusion" class="mb-5">
+                    <h2 class="h3 border-bottom pb-2 mb-3">الخلاصة: تدريب عملي من أجل مهمة عظيمة</h2>
+                    <p>كانت جنة آدم اختباراً عملياً في بيئة أرضية مهيأة، مركزها مكة وشبه الجزيرة العربية. كان التكليف بسيطاً: اجتناب شجرة واحدة. الفشل في هذا الاختبار، الذي وصفه القرآن بأن آدم لم يكن له فيه "عزم"، أدى إلى بداية مرحلة جديدة من المشقة والكفاح. أما الكلمات التي تلقاها آدم من ربه ليتوب عليه، فيرى البعض أنها كانت شعائر الحج، ليكون أول حاج إلى أول بيت وُضع للناس.</p>
+                    <p>هكذا نفهم الفرق بين جنة الاختبار الأرضية، وجنة الخلد السماوية التي هي الجزاء الأبدي، والتي نسأل الله أن نكون من أهلها.</p>
+                </section>
+                <section id="faq-section" class="mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-warning">
+                            <h2 id="faq-heading" class="mb-0 h4">أسئلة شائعة حول جنة آدم</h2>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="accordion accordion-flush" id="faqAccordion">
+                                <div class="accordion-item faq-item">
+                                    <h3 class="accordion-header" id="faq-heading-1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="true" aria-controls="faq-collapse-1"> هل كانت جنة آدم هي جنة الخلد الأبدية؟ </button></h3>
+                                    <div id="faq-collapse-1" class="accordion-collapse collapse show" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>لا، الأدلة ترجح أنها لم تكن جنة الخلد. فجنة الخلد لا يخرج منها من يدخلها، ولا يدخلها إبليس، ووصفها النبي بأنها "ما لا عين رأت". بما أن آدم خرج منها، ودخلها إبليس، ورآها آدم وهو بشر، فلا يمكن أن تكون هي جنة الجزاء الأبدي. كانت "جنة اختبار" مهيأة لمهمة محددة.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item faq-item">
+                                    <h3 class="accordion-header" id="faq-heading-2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2"> ما هي الأدلة على أن الجنة كانت في السماء؟ وما الرد عليها؟ </button></h3>
+                                    <div id="faq-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>استند القائلون بأنها في السماء إلى أدلة مثل لفظ "اهبطوا" وقوله تعالى "ولكم في الأرض مستقر". ولكن يمكن الرد بأن "الهبوط" قد يعني الانتقال من مكان لآخر على نفس المستوى أو من مكان مرتفع لمنخفض على الأرض. كما أن تحديد الأرض كمستقر لاحق لا ينفي أنهم كانوا في جزء أرضي مخصص للاختبار قبل ذلك.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item faq-item">
+                                    <h3 class="accordion-header" id="faq-heading-3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3"> لماذا يُعتقد أن موقع الجنة كان في شبه الجزيرة العربية؟ </button></h3>
+                                    <div id="faq-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>لعدة أسباب، منها: المعنى اللغوي لكلمة "جنة" (بستان مسوّر) الذي ينطبق على التكوين الجغرافي لشبه الجزيرة المحاطة بالبحار والمرتفعات. كما أنها كانت مركز رسالات معظم الأنبياء، مما يشير إلى أنها مسرح الأحداث الأول. وأخيراً، الروايات حول <a class="fw-bold text-primary scroll-link" href="#section-meeting">لقاء آدم وحواء</a> في عرفات ومزدلفة تعزز هذا التصور.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-2">
+                <nav class="flex-column align-items-stretch navbar navbar-light p-3 border rounded position-sticky" id="scrollspy-nav" style="top:1.5rem;"><span class="navbar-brand h5 mb-3">أقسام المقال</span>
+                    <nav class="flex-column nav nav-pills"><a class="nav-link" href="#section-intro">مقدمة وأنواع الجنان</a><a class="nav-link" href="#section-comparison">مقارنة بين الجنان</a><a class="nav-link" href="#section-debate">الجدل: سماء أم أرض؟</a><a class="nav-link" href="#section-earthly-evidence">أدلة على أنها بالأرض</a><a class="nav-link" href="#section-meeting">لقاء آدم وحواء</a><a class="nav-link" href="#section-conclusion">الخلاصة</a><a class="nav-link" href="#faq-section">أسئلة شائعة</a></nav>
+                </nav>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

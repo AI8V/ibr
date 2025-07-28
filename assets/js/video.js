@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ===================================================================
     const allVideos = [
         // Example Data: Replace with your actual video data
-         { id: "Yl6Zx1FOHUE", title: "النمسا تفتح الباب أمام محادثات الانضمام لحلف الناتو", category: "الحرب على القطاع", description: "341 _ النمسا تعلن أنها ستنضم لحلف الناتو وبريطانيا تعلن أنها ستدخل الحرب ضد الصين دفاعاً عن تايوان", articleUrl: "/Gazza/" },
-{ id: "2yRJV-su9yo", title: "هجوم أوكراني فاشل يستهدف بوتين في سان بطرسبرغ", category: "الحرب الروسية الأوكرانية", description: "340_ضرب منظومات الباتريوت فور وصولها المطارات الأوكرانية وأوكرانيا تهاجم سان بطرسبرج أثناء الإحتفال", articleUrl: "/World/" },
+         { id: "Yl6Zx1FOHUE", title: "النمسا تفتح الباب أمام محادثات الانضمام لحلف الناتو", category: "الحرب على القطاع", description: "341 _ النمسا تعلن أنها ستنضم لحلف الناتو وبريطانيا تعلن أنها ستدخل الحرب ضد الصين دفاعاً عن تايوان", articleUrl: "/ibr/Gazza/" },
+{ id: "2yRJV-su9yo", title: "هجوم أوكراني فاشل يستهدف بوتين في سان بطرسبرغ", category: "الحرب الروسية الأوكرانية", description: "340_ضرب منظومات الباتريوت فور وصولها المطارات الأوكرانية وأوكرانيا تهاجم سان بطرسبرج أثناء الإحتفال", articleUrl: "/ibr/World/" },
 
 { id: "rOIsx5vuNRI", title: "", category: "الحرب الروسية الأوكرانية", description: "339_ بوتين يتحدى الناتو فى بحر البلطيق والناتو يرد وترامب يوقف الحرب بين تايلاند وكمبوديا", articleUrl: "article-1.html" },
 { id: "0OE7yd2n_Qs", title: "", category: "الحرب الروسية الأوكرانية", description: "338_بدء إنسحاب الأوكران من بوكروفسك وعودة المظاهرات للعاصمة كييف وبريطانيا تتهرب من الإعتراف بفلسطين", articleUrl: "article-1.html" },
 { id: "IUDlkiv2oiM", title: "", category: "الحرب الروسية الأوكرانية", description: "337_الجيش الروسى ينجح فى إقتحام بكروفسك أكبر حصن فى إقليم دونيتسك وصحف بريطانيا تطالب برحيل زيلينسكى", articleUrl: "article-1.html" },
-{ id: "cFL25Kpuo_Y", title: "قصة آدم والجنة: هل كانت في السماء أم على الأرض؟", category: "البداية والنهاية", description: "9 - جنة آدم علية السلام كانت فى شبة الجزيرة العربية ( مكة ) البداية والنهاية _ إبراهيم الشرقاوى", articleUrl: "/Learn" },
+{ id: "cFL25Kpuo_Y", title: "قصة آدم والجنة: هل كانت في السماء أم على الأرض؟", category: "البداية والنهاية", description: "9 - جنة آدم علية السلام كانت فى شبة الجزيرة العربية ( مكة ) البداية والنهاية _ إبراهيم الشرقاوى", articleUrl: "/ibr/Learn" },
 { id: "PtdAtm__2og", title: "eJOY extension 2024 - Your Ultimate Knowledge & English Learning Tool", category: "Category Name", description: "A brief description for the article link.", articleUrl: "article-1.html" },
 
         { id: "PtdAtm__2og", title: "eJOY extension 2024 - Your Ultimate Knowledge & English Learning Tool", category: "رياضيات", description: "تعلم أساسيات الجبر في هذا الدرس الشامل الذي يغطي المعادلات والمتغيرات.", articleUrl: "article-1.html" },

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html data-bs-theme="auto" lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>ابراهيم الشرقاوى</title>
+    <script>
+        (function() {
+
+            // JavaScript snippet handling Dark/Light mode switching
+
+            const getStoredTheme = () => localStorage.getItem('theme');
+            const setStoredTheme = theme => localStorage.setItem('theme', theme);
+            const forcedTheme = document.documentElement.getAttribute('data-bss-forced-theme');
+
+            const getPreferredTheme = () => {
+
+                if (forcedTheme) return forcedTheme;
+
+                const storedTheme = getStoredTheme();
+                if (storedTheme) {
+                    return storedTheme;
+                }
+
+                const pageTheme = document.documentElement.getAttribute('data-bs-theme');
+
+                if (pageTheme) {
+                    return pageTheme;
+                }
+
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            const setTheme = theme => {
+                if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', theme);
+                }
+            }
+
+            setTheme(getPreferredTheme());
+
+            const showActiveTheme = (theme, focus = false) => {
+                const themeSwitchers = [].slice.call(document.querySelectorAll('.theme-switcher'));
+
+                if (!themeSwitchers.length) return;
+
+                document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                    element.classList.remove('active');
+                    element.setAttribute('aria-pressed', 'false');
+                });
+
+                for (const themeSwitcher of themeSwitchers) {
+
+                    const btnToActivate = themeSwitcher.querySelector('[data-bs-theme-value="' + theme + '"]');
+
+                    if (btnToActivate) {
+                        btnToActivate.classList.add('active');
+                        btnToActivate.setAttribute('aria-pressed', 'true');
+                    }
+                }
+            }
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                const storedTheme = getStoredTheme();
+                if (storedTheme !== 'light' && storedTheme !== 'dark') {
+                    setTheme(getPreferredTheme());
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                showActiveTheme(getPreferredTheme());
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const theme = toggle.getAttribute('data-bs-theme-value');
+                            setStoredTheme(theme);
+                            setTheme(theme);
+                            showActiveTheme(theme);
+                        })
+                    })
+            });
+        })();
+    </script>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <main class="container-xxl my-5" dir="rtl">
+        <div class="row">
+            <div class="col-lg-10">
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/"><span>الرئيسية</span></a></li>
+                        <li class="breadcrumb-item"><a href="/"><span>تحليل سياسي</span></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><span>جهود دبلوماسية وأزمات إنسانية</span></li>
+                    </ol>
+                </nav>
+                <div id="article-content" data-bs-spy="scroll" data-bs-target="#article-nav-spy" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                    <section id="article-hero" class="mb-5">
+                        <div class="card shadow-sm">
+                            <figure class="figure mb-0">
+                                <picture>
+                                    <source srcset="../assets/img/humanitarian-aid-trucks-gaza-crossing-400.webp 400w, ../assets/img/humanitarian-aid-trucks-gaza-crossing-820.webp 820w, ../assets/img/humanitarian-aid-trucks-gaza-crossing-1200.webp 1200w" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="img-fluid d-block card-img-top" src="../assets/img/humanitarian-aid-trucks-gaza-crossing-820.jpg" srcset="../assets/img/humanitarian-aid-trucks-gaza-crossing-400.jpg 400w, ../assets/img/humanitarian-aid-trucks-gaza-crossing-820.jpg 820w, ../assets/img/humanitarian-aid-trucks-gaza-crossing-1200.jpg 1200w" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="400" alt="شاحنات مساعدات إنسانية تصطف للدخول إلى قطاع غزة عبر معبر كرم أبو سالم.">
+                                </picture>
+                                <figcaption class="figure-caption visually-hidden">شاحنات المساعدات تنتظر للدخول إلى غزة، مما يسلط الضوء على التحديات اللوجستية والإنسانية.</figcaption>
+                            </figure>
+                            <div class="card-body p-4">
+                                <article aria-labelledby="main-heading">
+                                    <h1 id="main-heading" class="card-title h2 mb-3">تحليل شامل: جهود دبلوماسية مكثفة وأزمات إنسانية في غزة وأوكرانيا</h1>
+                                    <p class="lead">تتزايد المؤشرات على احتمالية التوصل إلى وقف لإطلاق النار في عدة جبهات دولية، مما يفتح الباب أمام تساؤلات حول مدى جدية هذه الجهود وقدرتها على تحقيق استقرار دائم في ظل التعقيدات السياسية والإنسانية المتشابكة.</p>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="diplomatic-efforts" class="mb-5 card-section">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 border-bottom pb-2 mb-3">جهود دبلوماسية لإنهاء الحروب في أوكرانيا وقطاع غزة</h2>
+                                <p>فقد أشار وزير الخارجية التركي، هاكان فيدان، إلى أن الترتيبات جارية لعقد لقاء بين الرئيس الروسي فلاديمير بوتين والرئيس الأوكراني فولوديمير زيلينسكي، مضيفًا أن الطرفين توصلا إلى اتفاق مبدئي على إطار عمل خطة لوقف إطلاق النار. بالتزامن مع ذلك، صرح الرئيس الأمريكي السابق دونالد ترامب بأنه سيقوم بتقصير المهلة التي حددها بخمسين يومًا لروسيا للتوصل إلى اتفاق سلام مع أوكرانيا، معربًا عن خيبة أمله في بوتين.</p>
+                                <div class="card text-center shadow-sm my-4 video-spotlight" data-video-id="oBes4dudzY4" data-start-seconds="0" data-end-seconds="0">
+                                    <div class="card-img-top position-relative"><img class="img-fluid" src="https://i.ytimg.com/vi/oBes4dudzY4/hqdefault.jpg" alt="صورة مصغرة للفيديو" width="480px" height="360px">
+                                        <div class="play-button-overlay"><span class="bi bi-play-circle-fill display-1" style="opacity:0.8;"></span></div>
+                                        <div class="d-none ratio ratio-16x9 video-iframe-container"></div>
+                                    </div>
+                                </div>
+                                <p>على صعيد آخر، وجه الرئيس المصري عبد الفتاح السيسي نداءً إلى الإدارة الأمريكية لبذل كافة الجهود الممكنة لوقف الحرب في قطاع غزة وتسهيل إدخال المساعدات الإنسانية. وتأتي هذه الدعوات في ظل تأكيدات مصرية بأن الحل يكمن في إنهاء الصراع، وأن <a class="fw-bold text-primary scroll-link" href="#trump-statements" aria-controls="trump-statements" aria-expanded="false" data-scroll-target="#trump-statements">ترامب هو من يملك القدرة على تحقيق ذلك</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="egypt-gaza-role" class="mb-5 card-section">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 border-bottom pb-2 mb-3">الدور المصري في أزمة غزة والموقف من التهجير</h2>
+                                <p>تؤكد القيادة المصرية على أنها لا يمكن أن تتخذ موقفًا سلبيًا تجاه الفلسطينيين، مشيرة إلى أن حجم المساعدات الجاهزة للدخول إلى القطاع ضخم جدًا وأن مصر لا تمنع دخولها. وقد جددت مصر رفضها القاطع لسيناريوهات التهجير القسري للفلسطينيين، معتبرة أن ذلك سيؤدي إلى تصفية القضية الفلسطينية وتفريغ الحل السلمي القائم على إقامة دولة فلسطينية من مضمونه. هذا الموقف الثابت يأتي ردًا على الضغوط والاتهامات التي تواجهها مصر، حيث تحاول بعض الأطراف تحميلها مسؤولية إغلاق المعابر.</p>
+                                <p>الواقع أن الموقف المصري يواجه تحديات داخلية وخارجية معقدة، حيث يسعى البعض لاستغلال القضية الفلسطينية لتحقيق مكاسب سياسية عبر توجيه اللوم إلى القاهرة. ومع ذلك، تشير التحليلات إلى أن استمرار الحرب يهدد بزعزعة استقرار أنظمة الحكم في المنطقة، مما يجعل وقفها ضرورة استراتيجية للجميع.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="gaza-humanitarian-crisis" class="mb-5 card-section">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 border-bottom pb-2 mb-3">الأزمة الإنسانية في غزة وتحديات إيصال المساعدات</h2>
+                                <figure class="figure d-table mx-auto mb-4">
+                                    <picture>
+                                        <source srcset="../assets/img/airdropped-humanitarian-aid-over-gaza-400.webp 400w, ../assets/img/airdropped-humanitarian-aid-over-gaza-820.webp 820w" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="../assets/img/airdropped-humanitarian-aid-over-gaza-820.jpg" srcset="../assets/img/airdropped-humanitarian-aid-over-gaza-400.jpg 400w, ../assets/img/airdropped-humanitarian-aid-over-gaza-820.jpg 820w" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="461" alt="مدنيون فلسطينيون يركضون نحو مساعدات إنسانية تم إسقاطها من الجو في غزة.">
+                                    </picture>
+                                    <figcaption class="figure-caption text-center mt-2">مشاهد يائسة للحصول على المساعدات الجوية تعكس عمق الكارثة الإنسانية في قطاع غزة.</figcaption>
+                                </figure>
+                                <p>على الرغم من بدء دخول بعض شاحنات المساعدات عبر الجانب المصري إلى معبر كرم أبو سالم، إلا أن الكميات التي تدخل لا تزال غير كافية على الإطلاق لمواجهة الأزمة الإنسانية الطاحنة. فبعد أن كان يدخل القطاع ما بين 700 إلى 800 شاحنة يوميًا، أصبحت الأعداد الحالية ضئيلة جدًا، مما يفاقم من معاناة السكان الذين يواجهون مجاعة حقيقية.</p>
+                                <p>المشاهد الواردة من القطاع تظهر مواطنين، بينهم أطفال، يركضون بيأس للحصول على المساعدات التي تُسقط جوًا، وهو ما يعكس حجم الكارثة. هذه الأوضاع المأساوية تؤكد على الحاجة الملحة لزيادة تدفق المساعدات بشكل فوري ومنظم لتجنب تفاقم الوضع. الخطة الأصلية للحصار كانت تهدف للضغط على الفصائل المسلحة، لكنها أدت إلى تجويع المدنيين، وهو ما خلق ضغطًا شعبيًا هائلاً في المنطقة <a class="fw-bold text-primary scroll-link" href="#egypt-gaza-role" aria-controls="egypt-gaza-role" aria-expanded="false" data-scroll-target="#egypt-gaza-role">لا يمكن للأنظمة تجاهله</a>.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="regional-tensions-gerd" class="mb-5 card-section">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 border-bottom pb-2 mb-3">التوترات الإقليمية: ملف سد النهضة والعلاقات الإثيوبية-الإيطالية</h2>
+                                <figure class="figure d-table mx-auto mb-4">
+                                    <picture>
+                                        <source srcset="../assets/img/abiy-ahmed-meets-giorgia-meloni-400.webp 400w, ../assets/img/abiy-ahmed-meets-giorgia-meloni-820.webp 820w" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="../assets/img/abiy-ahmed-meets-giorgia-meloni-820.jpg" srcset="../assets/img/abiy-ahmed-meets-giorgia-meloni-400.jpg 400w, ../assets/img/abiy-ahmed-meets-giorgia-meloni-820.jpg 820w" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="461" alt="رئيس الوزراء الإثيوبي آبي أحمد في لقاء رسمي مع رئيسة الوزراء الإيطالية جورجيا ميلوني.">
+                                    </picture>
+                                    <figcaption class="figure-caption text-center mt-2">لقاء آبي أحمد وجورجيا ميلوني يثير تساؤلات حول مستقبل المشاريع المائية في إثيوبيا.</figcaption>
+                                </figure>
+                                <p>في سياق إقليمي آخر، استقبل رئيس الوزراء الإثيوبي آبي أحمد رئيسة الوزراء الإيطالية جورجيا ميلوني في أديس أبابا. وتأتي هذه الزيارة في ظل ارتباط إيطاليا بمشاريع السدود في إثيوبيا، حيث أن شركة "ساليني" الإيطالية هي التي تقوم ببناء سد النهضة وغيره من السدود على الأنهار الإثيوبية.</p>
+                                <p>تثير هذه التطورات مخاوف من أن إثيوبيا تخطط لبناء المزيد من السدود قبل سد النهضة، وهو ما يهدد بتقليص حصص المياه لدول المصب بشكل حاد. التحليلات تشير إلى أن المشاريع الإثيوبية غالبًا ما تكون عبارة عن سلسلة من السدود المتكاملة، مما يعني أن الخطر على الأمن المائي لمصر والسودان قد يتزايد إذا لم يتم التوصل إلى حل ملزم.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="trump-statements" class="mb-5 card-section">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-4">
+                                <h2 class="h4 border-bottom pb-2 mb-3">تصريحات ترامب حول الصراعات الدولية والمساعدات</h2>
+                                <figure class="figure d-table mx-auto mb-4">
+                                    <picture>
+                                        <source srcset="../assets/img/donald-trump-press-conference-400.webp 400w, ../assets/img/donald-trump-press-conference-820.webp 820w" sizes="(max-width: 991px) 100vw, 83vw" type="image/webp"><img class="rounded img-fluid shadow-sm" src="../assets/img/donald-trump-press-conference-820.jpg" srcset="../assets/img/donald-trump-press-conference-400.jpg 400w, ../assets/img/donald-trump-press-conference-820.jpg 820w" sizes="(max-width: 991px) 100vw, 83vw" width="820" height="461" alt="الرئيس الأمريكي دونالد ترامب يتحدث إلى وسائل الإعلام حول القضايا الدولية.">
+                                    </picture>
+                                    <figcaption class="figure-caption text-center mt-2">تصريحات ترامب المتناقضة تعكس استراتيجيته السياسية والإعلامية الموجهة.</figcaption>
+                                </figure>
+                                <p>أدلى الرئيس الأمريكي دونالد ترامب بسلسلة من التصريحات المتناقضة بشأن الأزمة في غزة. فبينما ذكر أن المشاهد التلفزيونية تظهر أطفالًا يعانون من جوع شديد ويجب تأمين الغذاء لهم فورًا، وأنه نصح الإسرائيليين بالتعامل مع الأمر بطريقة مختلفة، عاد وقال إنه قدم أموالًا "ولم يشكره أحد".</p>
+                                <p>يُعرف ترامب بتركيزه على الملفات الاقتصادية وتجنب الحروب العسكرية المباشرة، مع السعي لتحقيق أقصى استفادة اقتصادية للولايات المتحدة تحت شعار "أمريكا أولاً". وعلى الرغم من أنه ينسب لنفسه الفضل في منع نشوب حروب كبرى، إلا أن تصريحاته غالبًا ما تكون موجهة للاستهلاك الإعلامي وتخدم أهدافه السياسية.</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="faq-section" class="mb-5">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-warning">
+                                <h2 id="faq-heading" class="mb-0 h4">أسئلة شائعة حول الأزمات الحالية</h2>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="accordion accordion-flush" id="faqAccordion">
+                                    <div class="accordion-item faq-item">
+                                        <h3 class="accordion-header" id="faq-heading-1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="true" aria-controls="faq-collapse-1">ما هي أبرز التحديات التي تواجه الدور المصري في أزمة غزة؟</button></h3>
+                                        <div id="faq-collapse-1" class="accordion-collapse collapse show" aria-labelledby="faq-heading-1" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body"><span> يواجه الدور المصري تحديات متعددة الأوجه. على الصعيد الخارجي، هناك ضغوط لتحميل مصر مسؤولية إغلاق المعابر، بينما تصر القاهرة على أن المعوقات تأتي من الجانب الإسرائيلي. داخليًا، تسعى بعض الأطراف لاستغلال القضية لتحقيق أهداف سياسية. بالإضافة إلى ذلك، يشكل خطر التهجير القسري تهديدًا مباشرًا للأمن القومي المصري ولمستقبل القضية الفلسطينية. </span></div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item faq-item">
+                                        <h3 class="accordion-header" id="faq-heading-2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2">لماذا يعتبر إيصال المساعدات إلى غزة معقدًا جدًا؟</button></h3>
+                                        <div id="faq-collapse-2" class="accordion-collapse collapse" aria-labelledby="faq-heading-2" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body"><span> عملية إيصال المساعدات معقدة بسبب عدة عوامل: أولاً، الإجراءات الأمنية والتفتيشية التي تفرضها إسرائيل على الشاحنات تبطئ من وتيرة دخولها. ثانيًا، الأضرار التي لحقت بالبنية التحتية والطرق داخل القطاع تجعل توزيع المساعدات صعبًا وخطيرًا. ثالثًا، الوضع الأمني المتردي والاستهدافات المستمرة تعرض عمال الإغاثة للخطر. وأخيرًا، الكميات المطلوبة لمواجهة المجاعة تفوق بكثير القدرة الحالية للمعابر على الاستيعاب والتوزيع. </span></div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item faq-item">
+                                        <h3 class="accordion-header" id="faq-heading-3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3">ما هي الأبعاد الاستراتيجية لملف سد النهضة؟</button></h3>
+                                        <div id="faq-collapse-3" class="accordion-collapse collapse" aria-labelledby="faq-heading-3" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body"><span> الأبعاد الاستراتيجية لملف سد النهضة تتجاوز مجرد تقاسم المياه. بالنسبة لإثيوبيا، يمثل السد مشروعًا تنمويًا وسياديًا حيويًا لتوليد الكهرباء. بالنسبة لمصر والسودان، يمثل تهديدًا وجوديًا لأمنهما المائي الذي يعتمد بشكل شبه كلي على نهر النيل. الخلاف لا يكمن في وجود السد بحد ذاته، بل في غياب اتفاق قانوني ملزم بشأن قواعد الملء والتشغيل، مما يترك دول المصب تحت رحمة قرارات أحادية قد تعرض حصصهم المائية التاريخية للخطر الشديد. </span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="final-cta">
+                        <div class="card border-primary text-center border-2 shadow-sm">
+                            <div class="card-body p-5 subscribe-container">
+                                <h3>ابق على اطلاع</h3>
+                                <p>اشترك في نشرتنا الإخبارية للحصول على أحدث التحليلات والأخبار العالمية مباشرة في بريدك الإلكتروني.</p>
+                                <form class="mx-auto input-group input-group-lg w-100" id="subscribe-form" style="max-width:600px;"><label class="visually-hidden" for="email-input">البريد الإلكتروني</label><input class="form-control" type="email" id="email-input" name="email" placeholder="أدخل بريدك الإلكتروني هنا" required=""><button class="btn btn-primary" id="submit-button" type="submit">اشترك الآن</button></form>
+                                <p id="success-message" style="display:none;color:green;margin-top:10px;"> شكراً لاشتراكك! تم تسجيل بريدك بنجاح. </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <nav id="article-nav" class="sticky-top pt-3">
+                    <div class="card shadow-sm">
+                        <div class="card-header"><span class="fw-bold h4 mb-3">محتويات المقال</span></div>
+                        <div class="card-body">
+                            <nav class="flex-column nav nav-pills" data-bs-spy="scroll" data-bs-target="#article-nav"><a class="nav-link" href="#diplomatic-efforts">الجهود الدبلوماسية</a><a class="nav-link" href="#egypt-gaza-role">الدور المصري في غزة</a><a class="nav-link" href="#gaza-humanitarian-crisis">الأزمة الإنسانية</a><a class="nav-link" href="#regional-tensions-gerd">التوترات الإقليمية</a><a class="nav-link" href="#trump-statements">تصريحات ترامب</a><a class="nav-link" href="#faq-section">أسئلة شائعة</a></nav>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/bs-init.js"></script>
+    <script src="../assets/js/CTA.js"></script>
+    <script src="../assets/js/script.js"></script>
+</body>
+
+</html>
